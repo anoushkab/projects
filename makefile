@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall
 
-proj2: Alchemist.o Game.o proj2.cpp
-        $(CXX) $(CXXFLAGS) Alchemist.o Game.o proj2.cpp -o proj2
+proj2: Alchemist.o Game.o lil_alchemy.cpp
+        $(CXX) $(CXXFLAGS) Alchemist.o Game.o lil_alchemy.cpp -o lil_alchemy
 
 Game.o: Alchemist.o Game.cpp Game.h
         $(CXX) $(CXXFLAGS) -c Game.cpp
@@ -15,4 +15,4 @@ clean:
         rm *~
 
 run:
-        ./proj2
+        ./lil_alchemy
