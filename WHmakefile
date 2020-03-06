@@ -1,0 +1,35 @@
+CXX = g++
+CXXFLAGS = -Wall
+
+
+proj4: War.o WHdriver.cpp
+        $(CXX) $(CXXFLAGS) Light.o Medium.o Heavy.o Warhorse.o Untrained.o Horse.o War.o WHdriver.cpp -o WH
+
+War.o: Horse.o Untrained.o Warhorse.o Light.o Medium.o Heavy.o War.cpp War.h
+        $(CXX) $(CXXFLAGS) -c War.cpp
+
+Horse.o: Horse.cpp Horse.h
+        $(CXX) $(CXXFLAGS) -c Horse.cpp
+
+Untrained.o: Horse.o Untrained.cpp Untrained.h
+        $(CXX) $(CXXFLAGS) -c Untrained.cpp
+
+Warhorse.o: Horse.o Warhorse.cpp Warhorse.h
+        $(CXX) $(CXXFLAGS) -c Warhorse.cpp
+
+Heavy.o: Warhorse.o Horse.o Heavy.cpp Heavy.h
+        $(CXX) $(CXXFLAGS) -c Heavy.cpp
+
+Medium.o: Warhorse.o Horse.o Medium.cpp Medium.h
+        $(CXX) $(CXXFLAGS) -c Medium.cpp
+
+Light.o: Warhorse.o Horse.o Light.cpp Light.h
+        $(CXX) $(CXXFLAGS) -c Light.cpp
+
+run:
+        ./WH WH_data.txt
+
+clean:
+        rm *.o
+        rm *~
+
